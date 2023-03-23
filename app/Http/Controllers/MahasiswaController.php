@@ -21,7 +21,7 @@ class MahasiswaController extends Controller
         $mahasiswa->nim = '01234567';
         $mahasiswa->nama = 'Bams Doe';
         $mahasiswa->tanggal_lahir = '2000-01-01';
-        $mahasiswa->ipk = 3.5;
+        $mahasiswa->ipk = 3.4;
         $mahasiswa->save();
 
         dump($mahasiswa);
@@ -96,7 +96,7 @@ class MahasiswaController extends Controller
     // update data with update()
     public function massUpdate()
     {
-       Mahasiswa::where('nim', '61234567')->first()->update([
+        Mahasiswa::where('nim', '61234567')->first()->update([
             'nama' => 'Elo Jan',
             'ipk' => 2.0,
         ]);
@@ -116,7 +116,7 @@ class MahasiswaController extends Controller
     // destroy
     public function destroy()
     {
-       Mahasiswa::destroy(2);
+        Mahasiswa::destroy(2);
 //        dump($mahasiswa);
 
         return "Berhasil delete data  ";
@@ -125,18 +125,19 @@ class MahasiswaController extends Controller
     // massDelete with where and delete
     public function massDelete()
     {
-        $mahasiswa = Mahasiswa::where('ipk', '<', 3.8 )->delete();
+        $mahasiswa = Mahasiswa::where('ipk', '<', 3.8)->delete();
         dump($mahasiswa);
 
         return "Berhasil delete data ";
     }
 
     // show all mahasiswa
-    public function all(){
+    public function all()
+    {
         $result = Mahasiswa::all();
         dump($result);
 
-        foreach ($result as $mahasiswa){
+        foreach ($result as $mahasiswa) {
             echo $mahasiswa->nama . '<br>';
             echo $mahasiswa->nim . '<br>';
             echo $mahasiswa->tanggal_lahir . '<br>';
@@ -146,12 +147,28 @@ class MahasiswaController extends Controller
     }
 
     // all view return view
-    public function allView(){
+    public function allView()
+    {
         $result = Mahasiswa::all();
         return view('tampil-mahasiswa', ['mahasiswas' => $result]);
     }
 
+    // get where
+    public function getWhere()
+    {
+        $mahasiswas = Mahasiswa::where('ipk', '>', 3.5)
+            ->orderBy('nama', 'desc')
+            ->get();
 
+        return view('tampil-mahasiswa', ['mahasiswas' => $mahasiswas]);
+    }
+
+    // get where nim
+    public function testWhere()
+    {
+        $mahasiswa = Mahasiswa::where('nim', '01234567')->get();
+        dump($mahasiswa);
+    }
 
 
 }
