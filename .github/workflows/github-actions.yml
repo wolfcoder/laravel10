@@ -1,0 +1,21 @@
+name: remote ssh command
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy using ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_VPSIR }}
+          username: ${{ secrets.USERNAME_VPSIR }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: 22
+          script: |
+            ls al
+            cd /www/wwwroot/laravel10.rentcarindo.com/
+            git pull origin
