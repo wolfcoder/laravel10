@@ -11,6 +11,7 @@
 <body>
 <section class="container">
     <h1>Update Action 06:37</h1>
+    <h1>Update Action 06:39</h1>
     <h1 class="text-red">Daftar Mahasiswa Eloquent</h1>
     <table border="1">
         <tr>
