@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -147,9 +148,9 @@ class MahasiswaController extends Controller
     }
 
     // all view return view
-    public function allView()
+    public function allView(): View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $result = Mahasiswa::all();
+        $result = Mahasiswa::all() ?? [];
         return view('tampil-mahasiswa', ['mahasiswas' => $result]);
     }
 

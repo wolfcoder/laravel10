@@ -19,3 +19,4 @@ jobs:
             ls al
             cd /www/wwwroot/laravel10.rentcarindo.com/
             git pull origin
+            npm run build
