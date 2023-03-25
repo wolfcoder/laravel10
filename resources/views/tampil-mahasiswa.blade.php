@@ -12,7 +12,7 @@
 <header>
     <section class=" bg-blue-400 ">
         <div class="max-w-5xl mx-auto py-3">
-            <h1 class="text-3xl">Rental Mobil</h1>
+            <h1 class="text-3xl">User Data</h1>
         </div>
     </section>
 </header>

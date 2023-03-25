@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+// route to session controller
+Route::get('/session', [SessionController::class, 'index']);
+//// route to session with resource
+//Route::resource('session', SessionController::class);
 
 Route::get('/cek-object', [MahasiswaController::class, 'cekObject']);
 
@@ -47,3 +49,6 @@ Route::get('/soft-delete', [MahasiswaController::class, 'softDelete']);
 Route::get('/with-trashed', [MahasiswaController::class, 'withTrashed']);
 Route::get('/restore', [MahasiswaController::class, 'restore']);
 Route::get('/force-delete', [MahasiswaController::class, 'forceDelete']);
+
+
+
